@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Healthcare Management Platform for Clinical Operations | Anomaly Detection Precision</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="bi bi-shield-fill-check"></i>
+            </div>
+
+            <div>
+                <h2>Healthcare Management Platform for Clinical Operations</h2>
+                <small>Safety Validation</small>
+            </div>
+
+        </div>
+
+        <div class="nav-title">
+            MAIN MENU
+        </div>
+
+        <nav>
+
+            <a class="nav-link"
+               href="index.html">
+
+                <i class="bi bi-grid-1x2-fill"></i>
+                Dashboard
+
+            </a>
+
+            <a class="nav-link"
+               href="vitals-range-validation.html">
+
+                <i class="bi bi-heart-pulse-fill"></i>
+                Vitals Range Validation
+
+            </a>
+
+            <a class="nav-link"
+               href="alert-fatigue-prevention.html">
+
+                <i class="bi bi-bell-slash-fill"></i>
+                Alert Fatigue Prevention
+
+            </a>
+
+            <a class="nav-link active"
+               href="anomaly-detection-precision.html">
+
+                <i class="bi bi-radar"></i>
+                Anomaly Detection Precision
+
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <i class="bi bi-shield-lock-fill"></i>
+
+            <span>
+                Secure AI Analytics
+            </span>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="breadcrumb">
+
+                Safety Validation
+
+                <span>/</span>
+
+                <strong>
+                    Anomaly Detection Precision
+                </strong>
+
+            </div>
+
+            <div class="user">
+
+                <span>
+                    Clinician
+                </span>
+
+                <div class="avatar">
+                    C
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <section class="content">
+
+            <!-- HERO -->
+
+            <div class="hero">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MILESTONE 3
+                    </span>
+
+                    <h1>
+                        Anomaly Detection Precision
+                    </h1>
+
+                    <p>
+                        Enter patient vitals and send them to the
+                        Healthcare Management Platform for Clinical Operations anomaly detection model.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BACKEND NOTICE
+            ================================================== -->
+
+            <div id="pNotice"
+                 class="static-notice">
+
+                <i class="bi bi-cloud-check"></i>
+
+                <span id="noticeText">
+                    Ready to connect to anomaly detection backend.
+                </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 PATIENT VITALS
+            ================================================== -->
+
+            <div class="section">
+
+                <div class="section-head">
+
+                    <div>
+
+                        <h2>
+                            Patient Vitals
+                        </h2>
+
+                        <p>
+                            Enter the patient's current vital signs.
+                        </p>
+
+                    </div>
+
+                    <span class="status"
+                          id="pStatus">
+
+                        Ready
+
+                    </span>
+
+                </div>
+
+
+                <form id="anomalyForm">
+
+                    <div class="row g-4">
+
+                        <!-- HEART RATE -->
+
+                        <div class="col-md-6">
+
+                            <label for="heartRate"
+                                   class="form-label">
+
+                                <i class="bi bi-heart-pulse-fill"></i>
+
+                                Heart Rate
+
+                                <span class="text-muted">
+                                    (bpm)
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="heartRate"
+                                name="heartRate"
+                                min="20"
+                                max="250"
+                                step="0.1"
+                                placeholder="Example: 75"
+                                required
+                            >
+
+                            <small class="text-muted">
+                                Normal example: 60–100 bpm
+                            </small>
+
+                        </div>
+
+
+                        <!-- SYSTOLIC BP -->
+
+                        <div class="col-md-6">
+
+                            <label for="systolicBp"
+                                   class="form-label">
+
+                                <i class="bi bi-activity"></i>
+
+                                Systolic Blood Pressure
+
+                                <span class="text-muted">
+                                    (mmHg)
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="systolicBp"
+                                name="systolicBp"
+                                min="50"
+                                max="300"
+                                step="0.1"
+                                placeholder="Example: 120"
+                                required
+                            >
+
+                            <small class="text-muted">
+                                Normal example: 90–140 mmHg
+                            </small>
+
+                        </div>
+
+
+                        <!-- DIASTOLIC BP -->
+
+                        <div class="col-md-6">
+
+                            <label for="diastolicBp"
+                                   class="form-label">
+
+                                <i class="bi bi-heart"></i>
+
+                                Diastolic Blood Pressure
+
+                                <span class="text-muted">
+                                    (mmHg)
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="diastolicBp"
+                                name="diastolicBp"
+                                min="30"
+                                max="200"
+                                step="0.1"
+                                placeholder="Example: 80"
+                                required
+                            >
+
+                            <small class="text-muted">
+                                Normal example: 60–90 mmHg
+                            </small>
+
+                        </div>
+
+
+                        <!-- TEMPERATURE -->
+
+                        <div class="col-md-6">
+
+                            <label for="temperature"
+                                   class="form-label">
+
+                                <i class="bi bi-thermometer-half"></i>
+
+                                Temperature
+
+                                <span class="text-muted">
+                                    (°C)
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="temperature"
+                                name="temperature"
+                                min="30"
+                                max="45"
+                                step="0.1"
+                                placeholder="Example: 37.0"
+                                required
+                            >
+
+                            <small class="text-muted">
+                                Normal example: 36.1–37.5 °C
+                            </small>
+
+                        </div>
+
+
+                        <!-- SPO2 -->
+
+                        <div class="col-md-6">
+
+                            <label for="spo2"
+                                   class="form-label">
+
+                                <i class="bi bi-lungs-fill"></i>
+
+                                SpO₂
+
+                                <span class="text-muted">
+                                    (%)
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="spo2"
+                                name="spo2"
+                                min="50"
+                                max="100"
+                                step="0.1"
+                                placeholder="Example: 98"
+                                required
+                            >
+
+                            <small class="text-muted">
+                                Normal example: 95–100%
+                            </small>
+
+                        </div>
+
+
+                        <!-- RESPIRATORY RATE -->
+
+                        <div class="col-md-6">
+
+                            <label for="respiratoryRate"
+                                   class="form-label">
+
+                                <i class="bi bi-wind"></i>
+
+                                Respiratory Rate
+
+                                <span class="text-muted">
+                                    (/min)
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="respiratoryRate"
+                                name="respiratoryRate"
+                                min="5"
+                                max="60"
+                                step="0.1"
+                                placeholder="Example: 16"
+                                required
+                            >
+
+                            <small class="text-muted">
+                                Normal example: 12–20 /min
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BUTTONS
+                    ================================================== -->
+
+                    <div class="mt-4 d-flex gap-3 flex-wrap">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            id="detectBtn">
+
+                            <i class="bi bi-radar"></i>
+
+                            Detect Anomaly
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-success"
+                            id="normalBtn">
+
+                            <i class="bi bi-heart-pulse"></i>
+
+                            Load Normal Vitals
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-danger"
+                            id="abnormalBtn">
+
+                            <i class="bi bi-exclamation-triangle"></i>
+
+                            Load Abnormal Vitals
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            id="resetBtn">
+
+                            <i class="bi bi-arrow-counterclockwise"></i>
+
+                            Reset
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-info"
+                            id="refreshBtn">
+
+                            <i class="bi bi-arrow-clockwise"></i>
+
+                            Refresh Result
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- =================================================
+                 RESULT
+            ================================================== -->
+
+            <div class="section">
+
+                <div class="section-head">
+
+                    <div>
+
+                        <h2>
+                            Detection Result
+                        </h2>
+
+                        <p>
+                            Result returned by the Milestone 3 ML service.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stats">
+
+                    <div class="stat">
+
+                        <div class="stat-label">
+                            Detection Status
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="pPrecision">
+
+                            --
+
+                        </div>
+
+                        <div class="stat-sub">
+                            Model classification
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-label">
+                            Prediction
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="pTP">
+
+                            --
+
+                        </div>
+
+                        <div class="stat-sub">
+                            Isolation Forest output
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-label">
+                            Anomaly Score
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="pFP">
+
+                            --
+
+                        </div>
+
+                        <div class="stat-sub">
+                            Model anomaly score
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-label">
+                            Request Status
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="pTotal">
+
+                            --
+
+                        </div>
+
+                        <div class="stat-sub">
+                            Backend response
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SUBMITTED VITALS
+            ================================================== -->
+
+            <div class="section">
+
+                <div class="section-head">
+
+                    <div>
+
+                        <h2>
+                            Submitted Vitals
+                        </h2>
+
+                        <p>
+                            Values sent to the anomaly detection service.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="details-grid">
+
+                    <div class="detail">
+
+                        <span>
+                            Heart Rate
+                        </span>
+
+                        <strong id="resultHeartRate">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Systolic BP
+                        </span>
+
+                        <strong id="resultSystolicBp">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Diastolic BP
+                        </span>
+
+                        <strong id="resultDiastolicBp">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Temperature
+                        </span>
+
+                        <strong id="resultTemperature">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            SpO₂
+                        </span>
+
+                        <strong id="resultSpo2">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Respiratory Rate
+                        </span>
+
+                        <strong id="resultRespiratoryRate">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RESULT MESSAGE
+            ================================================== -->
+
+            <div
+                class="validity"
+                id="validityBox">
+
+                <i
+                    class="bi bi-shield-check"
+                    id="validityIcon">
+                </i>
+
+                <div>
+
+                    <strong id="validityTitle">
+                        Waiting for detection
+                    </strong>
+
+                    <p id="validityText">
+
+                        Enter patient vitals and click
+                        "Detect Anomaly".
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            Healthcare Management Platform for Clinical Operations Healthcare Management Platform
+            • Secure • Reliable • Healthcare
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     EXISTING GLOBAL SCRIPT
+====================================================== -->
+
+<script src="script.js"></script>
+
+
+<!-- =====================================================
+     ANOMALY DETECTION SCRIPT
+====================================================== -->
+
+<script>
+
+(function () {
+
+    "use strict";
+
+
+    /* =====================================================
+       CONFIGURATION
+    ===================================================== */
+
+    const API_URL =
+        (window.ANOMALY_API_BASE || (location.protocol.startsWith("http") ? location.origin : "http://localhost:8080")) + "/api/anomaly/detect";
+
+
+    /* =====================================================
+       SAFE ELEMENT HELPER
+    ===================================================== */
+
+    function el(id) {
+
+        return document.getElementById(id);
+
+    }
+
+
+    /* =====================================================
+       SAFE TEXT UPDATE
+    ===================================================== */
+
+    function setText(id, value) {
+
+        const element = el(id);
+
+        if (element) {
+
+            element.textContent = value;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       NOTICE
+    ===================================================== */
+
+    function updateNotice(message) {
+
+        const noticeText = el("noticeText");
+
+        if (!noticeText) {
+
+            console.warn(
+                "noticeText element was not found."
+            );
+
+            return;
+
+        }
+
+        noticeText.textContent = message;
+
+    }
+
+
+    /* =====================================================
+       STATUS
+    ===================================================== */
+
+    function setStatus(text, type) {
+
+        const status = el("pStatus");
+
+        if (!status) {
+
+            return;
+
+        }
+
+        status.textContent = text;
+
+        status.className = "status";
+
+
+        if (type === "danger") {
+
+            status.classList.add("danger");
+
+        }
+
+        else if (type === "success") {
+
+            status.classList.add("success");
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CLEAR RESULT
+    ===================================================== */
+
+    function clearAnomalyResult() {
+
+        setText("pPrecision", "--");
+
+        setText("pTP", "--");
+
+        setText("pFP", "--");
+
+        setText("pTotal", "--");
+
+
+        setText(
+            "validityTitle",
+            "Waiting for detection"
+        );
+
+
+        setText(
+            "validityText",
+            'Enter patient vitals and click "Detect Anomaly".'
+        );
+
+
+        const icon = el("validityIcon");
+
+        if (icon) {
+
+            icon.className =
+                "bi bi-shield-check";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CLEAR SUBMITTED VITALS
+    ===================================================== */
+
+    function clearSubmittedVitals() {
+
+        setText("resultHeartRate", "--");
+
+        setText("resultSystolicBp", "--");
+
+        setText("resultDiastolicBp", "--");
+
+        setText("resultTemperature", "--");
+
+        setText("resultSpo2", "--");
+
+        setText("resultRespiratoryRate", "--");
+
+    }
+
+
+    /* =====================================================
+       LOAD NORMAL VITALS
+    ===================================================== */
+
+    function loadNormalVitals() {
+
+        setTextInput("heartRate", 75);
+
+        setTextInput("systolicBp", 120);
+
+        setTextInput("diastolicBp", 80);
+
+        setTextInput("temperature", 37.0);
+
+        setTextInput("spo2", 98);
+
+        setTextInput("respiratoryRate", 16);
+
+
+        setStatus(
+            "Normal vitals loaded",
+            "success"
+        );
+
+
+        updateNotice(
+            "Normal sample vitals loaded. Click Detect Anomaly."
+        );
+
+    }
+
+
+    /* =====================================================
+       LOAD ABNORMAL VITALS
+    ===================================================== */
+
+    function loadAbnormalVitals() {
+
+        setTextInput("heartRate", 120);
+
+        setTextInput("systolicBp", 180);
+
+        setTextInput("diastolicBp", 110);
+
+        setTextInput("temperature", 39.5);
+
+        setTextInput("spo2", 88);
+
+        setTextInput("respiratoryRate", 30);
+
+
+        setStatus(
+            "Abnormal vitals loaded",
+            "danger"
+        );
+
+
+        updateNotice(
+            "Abnormal sample vitals loaded. Click Detect Anomaly."
+        );
+
+    }
+
+
+    /* =====================================================
+       SET INPUT VALUE SAFELY
+    ===================================================== */
+
+    function setTextInput(id, value) {
+
+        const input = el(id);
+
+        if (input) {
+
+            input.value = value;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    function resetAnomalyForm() {
+
+        const form = el("anomalyForm");
+
+        if (form) {
+
+            form.reset();
+
+        }
+
+
+        clearAnomalyResult();
+
+        clearSubmittedVitals();
+
+
+        setStatus(
+            "Ready",
+            "ready"
+        );
+
+
+        updateNotice(
+            "Form reset. Enter patient vitals and detect again."
+        );
+
+    }
+
+
+    /* =====================================================
+       REFRESH RESULT
+    ===================================================== */
+
+    function refreshAnomalyResult() {
+
+        clearAnomalyResult();
+
+        clearSubmittedVitals();
+
+
+        setStatus(
+            "Ready",
+            "ready"
+        );
+
+
+        updateNotice(
+            "Result refreshed. Enter vitals and click Detect Anomaly."
+        );
+
+    }
+
+
+    /* =====================================================
+       SHOW SUCCESS RESULT
+    ===================================================== */
+
+    function showDetectionResult(
+        anomalyDetected,
+        prediction,
+        anomalyScore,
+        heartRate,
+        systolicBp,
+        diastolicBp,
+        temperature,
+        spo2,
+        respiratoryRate
+    ) {
+
+        setText(
+            "pPrecision",
+            anomalyDetected
+                ? "ANOMALY"
+                : "NORMAL"
+        );
+
+
+        setText(
+            "pTP",
+            prediction !== undefined &&
+            prediction !== null
+                ? prediction
+                : "--"
+        );
+
+
+        setText(
+            "pFP",
+            anomalyScore !== undefined &&
+            anomalyScore !== null &&
+            anomalyScore !== ""
+                ? Number(anomalyScore).toFixed(6)
+                : "--"
+        );
+
+
+        setText(
+            "pTotal",
+            "SUCCESS"
+        );
+
+
+        setText(
+            "resultHeartRate",
+            heartRate + " bpm"
+        );
+
+
+        setText(
+            "resultSystolicBp",
+            systolicBp + " mmHg"
+        );
+
+
+        setText(
+            "resultDiastolicBp",
+            diastolicBp + " mmHg"
+        );
+
+
+        setText(
+            "resultTemperature",
+            temperature + " °C"
+        );
+
+
+        setText(
+            "resultSpo2",
+            spo2 + "%"
+        );
+
+
+        setText(
+            "resultRespiratoryRate",
+            respiratoryRate + " /min"
+        );
+
+
+        const title = el("validityTitle");
+
+        const text = el("validityText");
+
+        const icon = el("validityIcon");
+
+
+        if (anomalyDetected === true) {
+
+            if (title) {
+
+                title.textContent =
+                    "Anomaly Detected";
+
+            }
+
+
+            if (text) {
+
+                text.textContent =
+                    "Anomaly detected in patient vitals.";
+
+            }
+
+
+            if (icon) {
+
+                icon.className =
+                    "bi bi-exclamation-triangle-fill";
+
+            }
+
+
+            setStatus(
+                "ANOMALY",
+                "danger"
+            );
+
+
+            updateNotice(
+                "Anomaly detection completed successfully."
+            );
+
+        }
+
+        else {
+
+            if (title) {
+
+                title.textContent =
+                    "Vitals Within Expected Range";
+
+            }
+
+
+            if (text) {
+
+                text.textContent =
+                    "No anomaly detected in the submitted patient vitals.";
+
+            }
+
+
+            if (icon) {
+
+                icon.className =
+                    "bi bi-shield-check";
+
+            }
+
+
+            setStatus(
+                "NORMAL",
+                "success"
+            );
+
+
+            updateNotice(
+                "Anomaly detection completed successfully."
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       SHOW ERROR
+    ===================================================== */
+
+    function showDetectionError(error) {
+
+        setText(
+            "pTotal",
+            "FAILED"
+        );
+
+
+        setText(
+            "validityTitle",
+            "Detection Failed"
+        );
+
+
+        setText(
+            "validityText",
+            error
+                ? error.message
+                : "Unable to connect to anomaly detection backend."
+        );
+
+
+        const icon = el("validityIcon");
+
+        if (icon) {
+
+            icon.className =
+                "bi bi-x-circle-fill";
+
+        }
+
+
+        setStatus(
+            "ERROR",
+            "danger"
+        );
+
+
+        updateNotice(
+            "Unable to connect to the anomaly detection backend."
+        );
+
+    }
+
+
+    /* =====================================================
+       FORM SUBMIT
+    ===================================================== */
+
+    async function detectAnomaly(event) {
+
+        event.preventDefault();
+
+
+        const heartRate =
+            Number(el("heartRate")?.value);
+
+
+        const systolicBp =
+            Number(el("systolicBp")?.value);
+
+
+        const diastolicBp =
+            Number(el("diastolicBp")?.value);
+
+
+        const temperature =
+            Number(el("temperature")?.value);
+
+
+        const spo2 =
+            Number(el("spo2")?.value);
+
+
+        const respiratoryRate =
+            Number(el("respiratoryRate")?.value);
+
+
+        /* =================================================
+           VALIDATION
+        ================================================= */
+
+        if (
+            !Number.isFinite(heartRate) ||
+            !Number.isFinite(systolicBp) ||
+            !Number.isFinite(diastolicBp) ||
+            !Number.isFinite(temperature) ||
+            !Number.isFinite(spo2) ||
+            !Number.isFinite(respiratoryRate)
+        ) {
+
+            alert(
+                "Please enter all patient vital values."
+            );
+
+            return;
+
+        }
+
+
+        /* =================================================
+           PAYLOAD
+        ================================================= */
+
+        const payload = {
+
+            heart_rate: heartRate,
+
+            systolic_bp: systolicBp,
+
+            diastolic_bp: diastolicBp,
+
+            temperature: temperature,
+
+            spo2: spo2,
+
+            respiratory_rate: respiratoryRate
+
+        };
+
+
+        console.log(
+            "Sending anomaly request:",
+            payload
+        );
+
+
+        /* =================================================
+           BUTTON LOADING
+        ================================================= */
+
+        const detectButton =
+            el("detectBtn");
+
+
+        if (detectButton) {
+
+            detectButton.disabled = true;
+
+            detectButton.innerHTML =
+                '<span class="spinner-border spinner-border-sm me-2"></span>' +
+                'Detecting...';
+
+        }
+
+
+        setStatus(
+            "Processing...",
+            "ready"
+        );
+
+
+        updateNotice(
+            "Sending patient vitals to Healthcare Management Platform for Clinical Operations anomaly detection service..."
+        );
+
+
+        try {
+
+            /* =============================================
+               FETCH BACKEND
+            ============================================= */
+
+            const response = await fetch(
+                API_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify(payload)
+
+                }
+            );
+
+
+            /* =============================================
+               READ RESPONSE
+            ============================================= */
+
+            const responseText =
+                await response.text();
+
+
+            console.log(
+                "Backend HTTP status:",
+                response.status
+            );
+
+
+            console.log(
+                "Backend response:",
+                responseText
+            );
+
+
+            let result;
+
+
+            try {
+
+                result =
+                    responseText
+                        ? JSON.parse(responseText)
+                        : {};
+
+            }
+
+            catch (jsonError) {
+
+                throw new Error(
+                    "Backend returned an invalid JSON response."
+                );
+
+            }
+
+
+            /* =============================================
+               HTTP ERROR
+            ============================================= */
+
+            if (!response.ok) {
+
+                const errorMessage =
+                    result.error ||
+                    result.message ||
+                    `Backend returned HTTP ${response.status}.`;
+
+                throw new Error(
+                    errorMessage
+                );
+
+            }
+
+
+            /* =============================================
+               SUPPORT BOTH RESPONSE FORMATS
+            ============================================= */
+
+            const data =
+                result.data ||
+                result;
+
+
+            console.log(
+                "Parsed anomaly data:",
+                data
+            );
+
+
+            /* =============================================
+               EXTRACT RESULT
+            ============================================= */
+
+            let anomalyDetected =
+                data.anomalyDetected;
+
+
+            let prediction =
+                data.prediction;
+
+
+            let anomalyScore =
+                data.anomalyScore;
+
+
+            /*
+             * Support snake_case responses too.
+             */
+
+            if (
+                anomalyDetected === undefined
+            ) {
+
+                anomalyDetected =
+                    data.anomaly_detected;
+
+            }
+
+
+            if (
+                prediction === undefined
+            ) {
+
+                prediction =
+                    data.prediction_value;
+
+            }
+
+
+            if (
+                anomalyScore === undefined
+            ) {
+
+                anomalyScore =
+                    data.anomaly_score;
+
+            }
+
+
+            /*
+             * Convert string boolean if necessary.
+             */
+
+            if (
+                typeof anomalyDetected === "string"
+            ) {
+
+                anomalyDetected =
+                    anomalyDetected.toLowerCase()
+                        === "true";
+
+            }
+
+
+            /* =============================================
+               UPDATE UI
+            ============================================= */
+
+            showDetectionResult(
+
+                anomalyDetected === true,
+
+                prediction,
+
+                anomalyScore,
+
+                heartRate,
+
+                systolicBp,
+
+                diastolicBp,
+
+                temperature,
+
+                spo2,
+
+                respiratoryRate
+
+            );
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Anomaly detection error:",
+                error
+            );
+
+
+            /*
+             * Better network error message
+             */
+
+            if (
+                error instanceof TypeError &&
+                error.message.includes("fetch")
+            ) {
+
+                error = new Error(
+                    "Cannot connect to the backend. " +
+                    "Check that the Render Spring Boot service is running and CORS is enabled."
+                );
+
+            }
+
+
+            showDetectionError(
+                error
+            );
+
+        }
+
+        finally {
+
+            /* =============================================
+               RESTORE BUTTON
+            ============================================= */
+
+            if (detectButton) {
+
+                detectButton.disabled =
+                    false;
+
+                detectButton.innerHTML =
+                    '<i class="bi bi-radar"></i> Detect Anomaly';
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE PAGE
+    ===================================================== */
+
+    function initializePage() {
+
+        console.log(
+            "Healthcare Management Platform for Clinical Operations Anomaly Detection page initialized."
+        );
+
+
+        const form =
+            el("anomalyForm");
+
+
+        if (!form) {
+
+            console.error(
+                "anomalyForm was not found."
+            );
+
+            return;
+
+        }
+
+
+        /* =============================================
+           RESET FORM
+        ============================================= */
+
+        form.reset();
+
+
+        clearAnomalyResult();
+
+        clearSubmittedVitals();
+
+
+        /* =============================================
+           BUTTON EVENTS
+        ============================================= */
+
+        const normalBtn =
+            el("normalBtn");
+
+
+        if (normalBtn) {
+
+            normalBtn.addEventListener(
+                "click",
+                loadNormalVitals
+            );
+
+        }
+
+
+        const abnormalBtn =
+            el("abnormalBtn");
+
+
+        if (abnormalBtn) {
+
+            abnormalBtn.addEventListener(
+                "click",
+                loadAbnormalVitals
+            );
+
+        }
+
+
+        const resetBtn =
+            el("resetBtn");
+
+
+        if (resetBtn) {
+
+            resetBtn.addEventListener(
+                "click",
+                resetAnomalyForm
+            );
+
+        }
+
+
+        const refreshBtn =
+            el("refreshBtn");
+
+
+        if (refreshBtn) {
+
+            refreshBtn.addEventListener(
+                "click",
+                refreshAnomalyResult
+            );
+
+        }
+
+
+        /* =============================================
+           FORM EVENT
+        ============================================= */
+
+        form.addEventListener(
+            "submit",
+            detectAnomaly
+        );
+
+
+        /* =============================================
+           INITIAL NOTICE
+        ============================================= */
+
+        updateNotice(
+            "Ready to connect to anomaly detection backend."
+        );
+
+
+        setStatus(
+            "Ready",
+            "ready"
+        );
+
+
+        console.log(
+            "All anomaly detection controls initialized."
+        );
+
+    }
+
+
+    /* =====================================================
+       START
+    ===================================================== */
+
+    if (
+        document.readyState === "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializePage
+        );
+
+    }
+
+    else {
+
+        initializePage();
+
+    }
+
+
+})();
+
+</script>
+
+</body>
+
+</html>

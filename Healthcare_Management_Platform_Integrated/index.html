@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthcare Management Platform for Clinical Operations | Safety Validation</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-icon"><i class="bi bi-shield-fill-check"></i></div>
+    <div><h2>Healthcare Management Platform for Clinical Operations</h2><small>Safety Validation</small></div>
+  </div>
+  <div class="nav-title">MAIN MENU</div>
+  <nav>
+    <a class="nav-link active" href="index.html"><i class="bi bi-grid-1x2-fill"></i>Dashboard</a>
+    <a class="nav-link" href="vitals-range-validation.html"><i class="bi bi-heart-pulse-fill"></i>Vitals Range Validation</a>
+    <a class="nav-link" href="alert-fatigue-prevention.html"><i class="bi bi-bell-slash-fill"></i>Alert Fatigue Prevention</a>
+    <a class="nav-link" href="anomaly-detection-precision.html"><i class="bi bi-radar"></i>Anomaly Detection Precision</a>
+  </nav>
+  <div class="sidebar-footer"><i class="bi bi-shield-lock-fill"></i><span>Secure AI Analytics</span></div>
+</aside>
+<main class="main">
+<header class="topbar">
+  <div class="mobile-menu"><i class="bi bi-list"></i></div>
+  <div class="breadcrumb">Healthcare Management Platform for Clinical Operations <span>/</span> <strong>Safety Dashboard</strong></div>
+  <div class="user"><span>Clinician</span><div class="avatar">C</div></div>
+</header>
+<section class="content">
+  <div class="hero">
+    <div><span class="eyebrow">MILESTONE 3</span><h1>Clinical Safety Validation</h1><p>Vitals range checks, alert fatigue prevention and anomaly detection precision, in one view.</p></div>
+    <button class="btn btn-primary-soft" onclick="refreshDashboard()"><i class="bi bi-arrow-clockwise"></i> Refresh Demo Data</button>
+  </div>
+
+  <div id="dashNotice" class="static-notice"><i class="bi bi-cloud-check"></i><span>Connecting to backend APIs...</span></div>
+
+  <div class="stats" id="dashboardStats">
+    <div class="stat"><div class="stat-label">Vitals Out of Range</div><div class="stat-value" id="dashOutRange">--</div><div class="stat-sub">Live monitoring feed</div></div>
+    <div class="stat"><div class="stat-label">Alerts Suppressed</div><div class="stat-value success" id="dashSuppressed">--</div><div class="stat-sub">Last 60 minutes</div></div>
+    <div class="stat"><div class="stat-label">Anomaly Precision</div><div class="stat-value success" id="dashPrecision">--</div><div class="stat-sub">Required &gt; 85%</div></div>
+    <div class="stat"><div class="stat-label">Modules Ready</div><div class="stat-value" id="dashModules">3 / 3</div><div class="stat-sub">Frontend complete</div></div>
+  </div>
+
+  <div class="section-grid">
+    <a class="module-card" href="vitals-range-validation.html"><div class="module-icon blue"><i class="bi bi-heart-pulse-fill"></i></div><div><h3>Vitals Range Validation</h3><p>Check each reading against the patient's clinically safe range.</p></div><i class="bi bi-arrow-right module-arrow"></i></a>
+    <a class="module-card" href="alert-fatigue-prevention.html"><div class="module-icon purple"><i class="bi bi-bell-slash-fill"></i></div><div><h3>Alert Fatigue Prevention</h3><p>Suppress duplicate and low-value alerts so real ones stand out.</p></div><i class="bi bi-arrow-right module-arrow"></i></a>
+    <a class="module-card" href="anomaly-detection-precision.html"><div class="module-icon orange"><i class="bi bi-radar"></i></div><div><h3>Anomaly Detection Precision</h3><p>Track true-positive precision of flagged anomalies against an 85% floor.</p></div><i class="bi bi-arrow-right module-arrow"></i></a>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><div><h2>Frontend Status</h2><p>UI is complete for all three checks and ready for backend integration.</p></div><span class="status">UI Ready</span></div>
+    <div class="integration-list">
+      <div><i class="bi bi-check-circle-fill"></i><span>Vitals Range Validation UI</span><small>Awaiting API</small></div>
+      <div><i class="bi bi-check-circle-fill"></i><span>Alert Fatigue Prevention UI</span><small>Awaiting API</small></div>
+      <div><i class="bi bi-check-circle-fill"></i><span>Anomaly Detection Precision UI</span><small>Awaiting API</small></div>
+    </div>
+  </div>
+</section>
+<footer class="footer">Healthcare Management Platform for Clinical Operations Healthcare Management Platform • Secure • Reliable • Healthcare</footer>
+</main>
+</div>
+<script src="script.js"></script>
+<script id="active-page-safety">
+document.querySelectorAll('.nav-link').forEach(function(link){
+  if(link.getAttribute('href') === location.pathname.split('/').pop()){
+    document.querySelectorAll('.nav-link').forEach(function(x){x.classList.remove('active');});
+    link.classList.add('active');
+  }
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", refreshDashboard);
+</script>
+</body>
+</html>

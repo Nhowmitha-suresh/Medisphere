@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthcare Management Platform for Clinical Operations | Vitals Range Validation</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.vitals-form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.form-field label{display:block;font-size:9px;color:#7c8ba1;font-weight:600;margin-bottom:6px}
+.form-field input{display:block;width:100%;background:#0a1424;border:1px solid #26364d;color:#fff;border-radius:7px;padding:10px;font-size:11px}
+.form-field input:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(37,99,235,.13)}
+.current-patient{font-size:10px;color:#71809a}
+.current-patient strong{color:#fff}
+.history-wrap{overflow-x:auto}
+.history-table{width:100%;border-collapse:collapse;min-width:920px}
+.history-table th{font-size:9px;color:#6f8099;text-align:left;padding:10px 9px;border-bottom:1px solid #26364d;white-space:nowrap}
+.history-table td{font-size:10px;color:#c8d2e0;padding:11px 9px;border-bottom:1px solid #1a293e;white-space:nowrap}
+.history-table tr:hover td{background:rgba(37,99,235,.04)}
+.history-empty{padding:24px;text-align:center;color:#697991;font-size:10px}
+.form-hint{font-size:9px;color:#5f7088;margin-top:6px}
+.patient-search-row{display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:10px;align-items:end}
+.patient-search-row input{width:100%;background:#0a1424;border:1px solid #26364d;color:#fff;border-radius:7px;padding:10px;font-size:11px}
+.patient-search-row input:focus{outline:none;border-color:#3b82f6}
+@media(max-width:900px){.vitals-form-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.vitals-form-grid,.patient-search-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-icon"><i class="bi bi-shield-fill-check"></i></div>
+    <div><h2>Healthcare Management Platform for Clinical Operations</h2><small>Clinical Operations</small></div>
+  </div>
+  <div class="nav-title">MAIN MENU</div>
+  <nav>
+    <a class="nav-link" href="index.html"><i class="bi bi-grid-1x2-fill"></i>Dashboard</a>
+    <a class="nav-link active" href="vitals-range-validation.html"><i class="bi bi-heart-pulse-fill"></i>Vitals Range Validation</a>
+    <a class="nav-link" href="alert-fatigue-prevention.html"><i class="bi bi-bell-slash-fill"></i>Alert Fatigue Prevention</a>
+    <a class="nav-link" href="anomaly-detection-precision.html"><i class="bi bi-radar"></i>Anomaly Detection Precision</a>
+  </nav>
+  <div class="sidebar-footer"><i class="bi bi-shield-lock-fill"></i><span>Secure Clinical Operations</span></div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <div class="breadcrumb">Clinical Operations <span>/</span> <strong>Vitals Range Validation</strong></div>
+  <div class="user"><span>Clinician</span><div class="avatar">C</div></div>
+</header>
+
+<section class="content">
+  <div class="hero">
+    <div>
+      <span class="eyebrow">PATIENT SAFETY</span>
+      <h1>Vitals Range Validation</h1>
+      <p>Submit patient vitals to Spring Boot, validate them, store them in PostgreSQL, and review the patient's history.</p>
+    </div>
+    <button class="btn btn-primary-soft" type="button" onclick="loadVitalsHistory()">
+      <i class="bi bi-arrow-clockwise"></i> Refresh Records
+    </button>
+  </div>
+
+  <div id="vNotice" class="static-notice">
+    <i class="bi bi-cloud-check"></i>
+    <span>Connecting to Vitals Range Validation backend...</span>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <h2>Patient Selection</h2>
+        <p>Search or select a Patient ID to view the latest readings and history.</p>
+      </div>
+    </div>
+    <div class="patient-search-row">
+      <div class="form-field">
+        <label for="patientId">PATIENT ID</label>
+        <input id="patientId" name="patientId" list="patientIds" type="text" placeholder="Example: P1001" autocomplete="off">
+        <datalist id="patientIds"></datalist>
+        <div class="form-hint">Existing IDs are loaded from GET /api/getvitals.</div>
+      </div>
+      <button class="btn btn-primary-soft" type="button" onclick="selectPatient()">
+        <i class="bi bi-search"></i> View Patient
+      </button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <h2>New Vital Entry</h2>
+        <p>Clinician-entered values are sent to POST /api/vitals for Spring Boot validation.</p>
+      </div>
+    </div>
+
+    <form id="vitalsForm">
+      <div class="vitals-form-grid">
+        <div class="form-field">
+          <label for="patientIdForm">PATIENT ID</label>
+          <input id="patientIdForm" type="text" placeholder="P1001" required>
+        </div>
+        <div class="form-field">
+          <label for="heartRateInput">HEART RATE (BPM)</label>
+          <input id="heartRateInput" type="number" min="0" max="250" step="0.1" placeholder="72" required>
+        </div>
+        <div class="form-field">
+          <label for="spo2Input">SpO₂ (%)</label>
+          <input id="spo2Input" type="number" min="0" max="100" step="0.1" placeholder="98" required>
+        </div>
+        <div class="form-field">
+          <label for="temperatureInput">TEMPERATURE (°C)</label>
+          <input id="temperatureInput" type="number" min="25" max="45" step="0.1" placeholder="36.8" required>
+        </div>
+        <div class="form-field">
+          <label for="respiratoryRateInput">RESPIRATORY RATE (/MIN)</label>
+          <input id="respiratoryRateInput" type="number" min="0" max="100" step="0.1" placeholder="16" required>
+        </div>
+        <div class="form-field">
+          <label for="systolicBpInput">SYSTOLIC BP (MMHG)</label>
+          <input id="systolicBpInput" type="number" min="0" max="300" step="0.1" placeholder="120" required>
+        </div>
+        <div class="form-field">
+          <label for="diastolicBpInput">DIASTOLIC BP (MMHG)</label>
+          <input id="diastolicBpInput" type="number" min="0" max="200" step="0.1" placeholder="80" required>
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex gap-3 flex-wrap">
+        <button class="btn btn-primary" type="submit" id="saveVitalsBtn">
+          <i class="bi bi-send-fill"></i> Validate &amp; Save Vitals
+        </button>
+        <button class="btn btn-outline-secondary" type="reset">
+          <i class="bi bi-arrow-counterclockwise"></i> Clear Form
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-label">Vitals Monitored</div><div class="stat-value" id="vTotal">--</div><div class="stat-sub">Current patient reading</div></div>
+    <div class="stat"><div class="stat-label">In Range</div><div class="stat-value success" id="vOk">--</div><div class="stat-sub">Within configured limits</div></div>
+    <div class="stat"><div class="stat-label">Out of Range</div><div class="stat-value" id="vBad">--</div><div class="stat-sub">Needs clinical attention</div></div>
+    <div class="stat"><div class="stat-label">Last Checked</div><div class="stat-value small-value" id="vTime">--</div><div class="stat-sub">Backend record time</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <h2>Current Vitals</h2>
+        <p>These values come from the latest stored record or directly from the POST response after submission.</p>
+      </div>
+      <span class="status" id="vStatus">Checking</span>
+    </div>
+    <div class="current-patient">Selected patient: <strong id="currentPatientId">--</strong></div>
+    <div id="vitalsList" style="margin-top:14px"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <h2>Previous Records / Patient History</h2>
+        <p>Stored records retrieved from GET /api/getvitals, filtered by the selected Patient ID.</p>
+      </div>
+    </div>
+    <div class="history-wrap">
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>Date / Time</th>
+            <th>Patient ID</th>
+            <th>Heart Rate</th>
+            <th>SpO₂</th>
+            <th>Temperature</th>
+            <th>Respiratory Rate</th>
+            <th>Blood Pressure</th>
+            <th>Validation Status</th>
+          </tr>
+        </thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+      <div id="historyEmpty" class="history-empty hidden">No records found for this patient.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <h2>Configured Ranges</h2>
+        <p>Frontend display ranges mirror the validation thresholds used by the Spring Boot service.</p>
+      </div>
+    </div>
+    <div class="details-grid">
+      <div class="detail"><span>Heart Rate</span><strong>60 – 100 bpm</strong></div>
+      <div class="detail"><span>SpO₂</span><strong>95 – 100 %</strong></div>
+      <div class="detail"><span>Temperature</span><strong>36.1 – 37.2 °C</strong></div>
+      <div class="detail"><span>Respiratory Rate</span><strong>12 – 20 /min</strong></div>
+      <div class="detail"><span>Systolic BP</span><strong>90 – 120 mmHg</strong></div>
+      <div class="detail"><span>Diastolic BP</span><strong>60 – 80 mmHg</strong></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">Healthcare Management Platform for Clinical Operations • Secure • Reliable • Clinical Operations</footer>
+</main>
+</div>
+
+<script src="script.js"></script>
+<script>
+(function(){
+  const form=document.getElementById("vitalsForm");
+  const patientSearch=document.getElementById("patientId");
+  const patientForm=document.getElementById("patientIdForm");
+
+  if(form){
+    form.addEventListener("submit", function(event){
+      if(patientSearch && patientForm) patientSearch.value=patientForm.value.trim();
+      submitVitals(event);
+    });
+  }
+
+  if(patientSearch){
+    patientSearch.addEventListener("change", function(){
+      if(patientForm) patientForm.value=patientSearch.value.trim();
+      selectPatient();
+    });
+  }
+
+  if(patientForm){
+    patientForm.addEventListener("input", function(){
+      if(patientSearch) patientSearch.value=patientForm.value;
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    loadVitalsHistory();
+  });
+})();
+</script>
+</body>
+</html>
